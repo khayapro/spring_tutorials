@@ -35,8 +35,9 @@ import java.util.List;
 public class BatchProcessingConfiguration {
 
     @Bean
-    @StepScope
+    @StepScope //Recreate each time job is run
     FlatFileItemReader<Person> flatFileItemReader(@Value("#{jobParameters[file]}")File file){
+        //Read data into type Person Object defined - from file
         FlatFileItemReader<Person> reader = new FlatFileItemReader<>();
         reader.setResource(new FileSystemResource(file));
         reader.setLineMapper(new DefaultLineMapper<Person>() {
@@ -58,9 +59,11 @@ public class BatchProcessingConfiguration {
 
     @Bean
     JdbcBatchItemWriter<Person> jdbcBatchItemWriter(DataSource h2){
+        //writing data of type person out
         JdbcBatchItemWriter<Person> writer = new JdbcBatchItemWriter<>();
         writer.setDataSource(h2);
         writer.setSql("INSERT INTO PEOPLE (name, surname, email) VALUES (:name, :surname, :email)");
+        //spring uses this to map values into the named properties above on incoming object.
         writer.setItemSqlParameterSourceProvider(new BeanPropertyItemSqlParameterSourceProvider<>());
         return writer;
     }
@@ -80,6 +83,7 @@ public class BatchProcessingConfiguration {
         return jobBuilderFactory.get("person-etl").start(step).build();
     }
 
+    //CommandLineRunner is an interface that springboot calls when the app starts
     @Bean
     CommandLineRunner runner(JobLauncher launcher, Job job, @Value("${file}") File in, JdbcTemplate template){
         return args -> {
