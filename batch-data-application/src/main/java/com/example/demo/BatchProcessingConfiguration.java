@@ -84,19 +84,15 @@ public class BatchProcessingConfiguration {
     }
 
     //CommandLineRunner is an interface that springboot calls when the app starts
-    @Bean
+//    @Bean
     CommandLineRunner runner(JobLauncher launcher, Job job, @Value("${file}") File in, JdbcTemplate template){
         return args -> {
             JobExecution execution = launcher.run(job, new JobParametersBuilder()
                     .addString("file", in.getAbsolutePath()).toJobParameters());
             System.out.println("Execution Status: " + execution.getExitStatus());
-            List<Person> personList = template.query("select * from PEOPLE", new RowMapper<Person>() {
-                @Override
-                public Person mapRow(ResultSet rs, int i) throws SQLException {
-                    return new Person(rs.getString("name"), rs.getString("surname"),
-                            rs.getString("email"));
-                }
-            });
+            List<Person> personList = template.query("select * from PEOPLE", (rs, i)
+                    -> new Person(rs.getString("name"), rs.getString("surname"),
+                    rs.getString("email")));
             personList.forEach(System.out::println);
         };
     }
