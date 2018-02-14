@@ -14,34 +14,34 @@ public class User {
         this.id = id;
     }
 
-    void activate(){
+    public void activate(){
         if(isActivated())
             throw new IllegalArgumentException("User already activated.");
         this.state = UserState.ACTIVATED;
     }
 
-    void deactivate(){
+    public void deactivate(){
         if(isDeactivated())
             throw new IllegalArgumentException("User already deactivated.");
         this.state = UserState.DEACTIVATED;
     }
 
-    boolean isActivated(){
+    public boolean isActivated(){
         return this.state == UserState.ACTIVATED;
     }
 
-    boolean isDeactivated(){
+    public boolean isDeactivated(){
         return this.state == UserState.DEACTIVATED;
     }
 
 
-    void changeName(final String newName){
+    public void changeName(final String newName){
         if(isDeactivated())
             throw new IllegalArgumentException("Cannot change name, user deactivated.");
         this.name = newName;
     }
 
-    String getName(){
+    public String getName(){
         return name;
     }
 
