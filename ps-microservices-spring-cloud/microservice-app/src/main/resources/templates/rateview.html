@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Display rates</title>
+</head>
+<body>
+<div>
+    <h1>Display config values for config server below</h1><br>
+    <p th:text="'Your rate is : ' + ${rate_amount} + ', number of lanes is ' + ${lanes} + ', and toll start time is ' + ${toll_start}" ></p>
+
+</div>
+</body>
+</html>
