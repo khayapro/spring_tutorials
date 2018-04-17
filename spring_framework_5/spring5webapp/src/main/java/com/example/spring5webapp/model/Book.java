@@ -29,6 +29,16 @@ public class Book {
             inverseJoinColumns = @JoinColumn(name = "author_id" ))
     private Set<Author> authors = new HashSet<>();
 
+    public Book() {
+        super();
+    }
+
+    public Book(String title, String isbn, String publisher) {
+        this.title = title;
+        this.isbn = isbn;
+        this.publisher = publisher;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
