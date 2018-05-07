@@ -2,6 +2,7 @@ package com.example.springintegration;
 
 import com.example.springintegration.services.PrintService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.boot.ApplicationArguments;
 import org.springframework.boot.ApplicationRunner;
 import org.springframework.boot.SpringApplication;
@@ -21,7 +22,12 @@ public class SpringIntegrationApplication implements ApplicationRunner {
 
 
 	@Autowired
-	private DirectChannel channel;
+	@Qualifier(value = "inputChannel")
+	private DirectChannel inputChannel;
+
+	@Autowired
+	@Qualifier("outputChannel")
+	private DirectChannel outputChannel;
 
 	public static void main(String[] args) {
 		SpringApplication.run(SpringIntegrationApplication.class, args);
@@ -31,17 +37,17 @@ public class SpringIntegrationApplication implements ApplicationRunner {
 	public void run(ApplicationArguments args) throws Exception {
 
 		//to handle message sent to this channel
-		channel.subscribe(new MessageHandler() {
+		outputChannel.subscribe(new MessageHandler() {
 			@Override
 			public void handleMessage(Message<?> message) throws MessagingException {
-				new PrintService().print((Message<String>)message); //just to demonstrate and not for production
+				System.out.println("outputChannel message handler: " + message.getPayload());
 			}
 		});
 
 
 		Message message = MessageBuilder.withPayload("Hello World payload")
 				.setHeader("key", "hello world header value").build();
-		channel.send(message);
+		inputChannel.send(message);
 
 	}
 }
