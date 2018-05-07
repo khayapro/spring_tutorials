@@ -10,6 +10,6 @@
 
     <bean id="printService"  class="com.example.springintegration.services.PrintService"/>
 
-    <int:service-activator ref="printService" method="print" input-channel="inputChannel" output-channel="outputChannel"/>
+    <int:service-activator ref="printService" method="print" input-channel="inputChannel"/>
 
 </beans>
