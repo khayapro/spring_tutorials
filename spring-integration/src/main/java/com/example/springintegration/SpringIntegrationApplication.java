@@ -46,7 +46,7 @@ public class SpringIntegrationApplication implements ApplicationRunner {
 		futures.forEach(f -> {
 			try {
 				System.out.println("future message number: " + f.get().getHeaders().get("messageNumber"));
-				System.out.println("future message: [" + f.get().getPayload() + "]");
+//				System.out.println("future message: [" + f.get().getPayload() + "]");
 			} catch (InterruptedException | ExecutionException e) {
 				e.printStackTrace();
 			}
