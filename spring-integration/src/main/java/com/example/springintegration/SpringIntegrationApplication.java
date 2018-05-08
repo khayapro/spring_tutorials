@@ -1,21 +1,15 @@
 package com.example.springintegration;
 
-import com.example.springintegration.services.PrintService;
 import com.example.springintegration.services.PrinterGateway;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.boot.ApplicationArguments;
 import org.springframework.boot.ApplicationRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.ImportResource;
-import org.springframework.integration.channel.DirectChannel;
-import org.springframework.integration.core.MessagingTemplate;
+import org.springframework.integration.support.MessageBuilder;
 import org.springframework.messaging.Message;
-import org.springframework.messaging.MessageHandler;
-import org.springframework.messaging.MessagingException;
-import org.springframework.messaging.support.MessageBuilder;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -41,7 +35,10 @@ public class SpringIntegrationApplication implements ApplicationRunner {
 
 		for (int i = 0; i < 10; i++) {
 			//create a message
-			final Message<String> message = MessageBuilder.withPayload("Hello message world payload : " + i).setHeader("messageNumber", i).build();
+			final Message<String> message = MessageBuilder.withPayload("Hello message world payload : " + i)
+					.setPriority(i)
+					.setHeader("messageNumber", i)
+					.build();
 			System.out.println("Sending message: " + i);
 			futures.add(this.gateway.print(message));
 		}

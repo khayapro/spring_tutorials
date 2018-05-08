@@ -9,7 +9,8 @@
     <int:gateway service-interface="com.example.springintegration.services.PrinterGateway" default-request-channel="inputChannel"/>
 
     <int:channel id="inputChannel">
-        <int:queue capacity="10"/>
+        <!--<int:queue capacity="10"/>-->
+        <int:priority-queue capacity="10"/>
     </int:channel>
     <int:channel id="outputChannel"/>
 
