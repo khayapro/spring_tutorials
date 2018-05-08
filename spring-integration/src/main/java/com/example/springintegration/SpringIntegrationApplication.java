@@ -1,6 +1,7 @@
 package com.example.springintegration;
 
 import com.example.springintegration.services.PrintService;
+import com.example.springintegration.services.PrinterGateway;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.boot.ApplicationArguments;
@@ -16,6 +17,11 @@ import org.springframework.messaging.MessageHandler;
 import org.springframework.messaging.MessagingException;
 import org.springframework.messaging.support.MessageBuilder;
 
+import java.util.ArrayList;
+import java.util.List;
+import java.util.concurrent.ExecutionException;
+import java.util.concurrent.Future;
+
 @SpringBootApplication
 @Configuration
 @ImportResource("integration-context.xml")
@@ -23,8 +29,7 @@ public class SpringIntegrationApplication implements ApplicationRunner {
 
 
 	@Autowired
-	@Qualifier(value = "inputChannel")
-	private DirectChannel inputChannel;
+	private PrinterGateway gateway;
 
 	public static void main(String[] args) {
 		SpringApplication.run(SpringIntegrationApplication.class, args);
@@ -32,13 +37,22 @@ public class SpringIntegrationApplication implements ApplicationRunner {
 
 	@Override
 	public void run(ApplicationArguments args) throws Exception {
+		List<Future<Message<String>>> futures = new ArrayList<>();
 
-		Message message = MessageBuilder.withPayload("Hello World payload")
-				.setHeader("key", "hello world header value").build();
+		for (int i = 0; i < 10; i++) {
+			//create a message
+			final Message<String> message = MessageBuilder.withPayload("Hello message world payload : " + i).setHeader("messageNumber", i).build();
+			System.out.println("Sending message: " + i);
+			futures.add(this.gateway.print(message));
+		}
 
-		final MessagingTemplate template = new MessagingTemplate();
-		final Message messageResponse = template.sendAndReceive(inputChannel, message);
-		System.out.println(messageResponse.getPayload());
-
+		futures.forEach(f -> {
+			try {
+				System.out.println("future message number: " + f.get().getHeaders().get("messageNumber"));
+				System.out.println("future message: [" + f.get().getPayload() + "]");
+			} catch (InterruptedException | ExecutionException e) {
+				e.printStackTrace();
+			}
+		});
 	}
 }

@@ -5,11 +5,19 @@
        xsi:schemaLocation="http://www.springframework.org/schema/beans  http://www.springframework.org/schema/beans/spring-beans.xsd
             http://www.springframework.org/schema/integration http://www.springframework.org/schema/integration/spring-integration.xsd">
 
-    <int:channel id="inputChannel"/>
+    <!--below is configuring our interface to accept messages into the inputChannel-->
+    <int:gateway service-interface="com.example.springintegration.services.PrinterGateway" default-request-channel="inputChannel"/>
+
+    <int:channel id="inputChannel">
+        <int:queue capacity="10"/>
+    </int:channel>
     <int:channel id="outputChannel"/>
 
     <bean id="printService"  class="com.example.springintegration.services.PrintService"/>
 
-    <int:service-activator ref="printService" method="print" input-channel="inputChannel"/>
+    <!-- inputChannel delivers messages to our printService activator-->
+    <int:service-activator ref="printService" method="print" input-channel="inputChannel">
+        <int:poller fixed-rate="5" time-unit="SECONDS" max-messages-per-poll="2"/>
+    </int:service-activator>
 
 </beans>
