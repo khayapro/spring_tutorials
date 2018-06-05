@@ -9,7 +9,7 @@ import java.util.List;
 @Configuration
 public class AppConfiguration {
 
-    @Bean
+    @Bean(name = "names")
     public List<String> names() {
         return Arrays.asList("Khaya", "Tumi", "Elliot","SomeoneElse");
     }

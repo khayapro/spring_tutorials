@@ -8,20 +8,26 @@
     <!--below is configuring our interface to accept messages into the inputChannel-->
     <int:gateway service-interface="com.example.springintegration.services.PrinterGateway" default-request-channel="inputChannel"/>
 
-    <int:publish-subscribe-channel id="inputChannel">
-        <!--<int:queue capacity="10"/>-->
+    <int:channel id="inputChannel">
+        <int:queue capacity="10"/>
+        <int:interceptors>
+            <int:ref bean="interceptor"/>
+        </int:interceptors>
         <!--<int:priority-queue capacity="10"/>-->
-    </int:publish-subscribe-channel>
+    </int:channel>
     <int:channel id="outputChannel"/>
 
     <bean id="printService"  class="com.example.springintegration.services.PrintService"/>
     <bean id="uppercasePrintService" class="com.example.springintegration.services.UpperCasePrintService"/>
+    <bean id="interceptor" class="com.example.springintegration.interceptor.CustomerChannelInterceptor"/>
 
     <!-- inputChannel delivers messages to our printService activator-->
-    <int:service-activator ref="printService" method="print" input-channel="inputChannel">
-        <!--<int:poller fixed-rate="5" time-unit="SECONDS" max-messages-per-poll="2"/>-->
+    <int:service-activator order="1" ref="printService" method="print" input-channel="inputChannel">
+        <int:poller fixed-rate="5" time-unit="SECONDS" max-messages-per-poll="1"/>
     </int:service-activator>
 
-    <int:service-activator ref="uppercasePrintService" method="print" input-channel="inputChannel"/>
+    <int:service-activator order="2" ref="uppercasePrintService" method="print" input-channel="inputChannel">
+        <int:poller fixed-rate="5" time-unit="SECONDS" max-messages-per-poll="1"/>
+    </int:service-activator>
 
 </beans>

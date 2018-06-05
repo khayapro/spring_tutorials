@@ -6,7 +6,7 @@ import org.springframework.messaging.Message;
 public class UpperCasePrintService {
 
     public Message<?> print(Message<String> message) {
-        System.out.println("message number: " + message.getHeaders().get("messageNumber").toString().toUpperCase());
+        System.out.println("message number: " + message.getHeaders().get("messageNumber"));
         System.out.println("received message: " +  message.getPayload().toUpperCase());
 
         return MessageBuilder.withPayload("New Message Response").build();
