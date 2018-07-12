@@ -31,4 +31,10 @@ public class EmployeeRepositoryTest {
         assertThat(response).isNotNull();
         assertThat(response.getName()).isEqualTo("Sam");
     }
+
+    @Test
+    public void should_remove_employee() {
+        final Employee employee = new Employee();
+        repository.removeEmployee(employee);
+    }
 }

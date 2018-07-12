@@ -21,4 +21,9 @@ public class EmployeeRepository {
     public Employee findById(final long empId) {
         return em.find(Employee.class, empId);
     }
+
+    @Transactional
+    public void removeEmployee(final Employee employee) {
+        em.remove(employee);
+    }
 }
