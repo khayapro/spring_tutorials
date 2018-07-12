@@ -1,0 +1,14 @@
+spring:
+  datasource:
+    username: sa
+    password:
+    url: jdbc:h2:mem:test;MODE=PostgreSQL;DB_CLOSE_ON_EXIT=FALSE
+    driver-class-name: org.h2.Driver
+  jpa:
+    database: H2
+    hibernate:
+      dialect: net.sf.hibernate.dialect.SQLServer2017Dialect
+      show_sql: true
+      format_sql: true
+      ddl-auto: create-drop
+
