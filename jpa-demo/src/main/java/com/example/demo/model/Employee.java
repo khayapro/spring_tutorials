@@ -25,4 +25,6 @@ public class Employee {
     @Lob
     @Column(name = "emp_pic")
     private byte[] picture;
+
+    private transient String translatedName;
 }
