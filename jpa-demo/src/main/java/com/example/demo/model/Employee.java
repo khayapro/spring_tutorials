@@ -3,13 +3,11 @@ package com.example.demo.model;
 import lombok.Data;
 
 import javax.persistence.Basic;
-import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.Lob;
 import javax.persistence.Table;
+import javax.persistence.TableGenerator;
 
 @Data
 @Entity
@@ -17,14 +15,12 @@ import javax.persistence.Table;
 public class Employee {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @TableGenerator(name = "EMP_GEN", table = "EMP_GEN_ID", pkColumnName = "PK_GEN_NAME", valueColumnName = "PK_GEN_VAL")
+    @GeneratedValue(generator = "EMP_GEN")
     private Long id;
     @Basic
     private String name;
     private Double salary;
-    @Lob
-    @Column(name = "emp_pic")
-    private byte[] picture;
 
     private transient String translatedName;
 }
