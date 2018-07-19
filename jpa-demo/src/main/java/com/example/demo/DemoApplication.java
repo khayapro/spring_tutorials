@@ -24,5 +24,8 @@ public class DemoApplication implements CommandLineRunner {
 		final Course course = repository.findById(1L);
 		log.info("course name: " + course.getName());
 
+		final Course course1 = repository.deleteById(1L);
+		log.info("course name: " + course.getName() + ", deleted successfully");
+
 	}
 }

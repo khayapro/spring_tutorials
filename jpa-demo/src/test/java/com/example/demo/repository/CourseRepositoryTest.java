@@ -24,6 +24,12 @@ public class CourseRepositoryTest {
     }
 
     @Test
+    public void deleteCourse() {
+        final Course response = repository.deleteById(1L);
+        assertThat(response).isNull();
+    }
+
+    @Test
     public void save() {
     }
 }
