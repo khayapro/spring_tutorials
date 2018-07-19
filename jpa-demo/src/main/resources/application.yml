@@ -2,7 +2,7 @@ spring:
   datasource:
     username: sa
     password:
-    url: jdbc:h2:mem:test;MODE=PostgreSQL;DB_CLOSE_ON_EXIT=FALSE
+    url: jdbc:h2:mem:testdb
     driver-class-name: org.h2.Driver
   jpa:
     database: H2
@@ -16,6 +16,10 @@ spring:
         format_sql: true
         generate_statistics: true
     show-sql: true
+#  Enabling H2 Console
+  h2:
+    console:
+      enabled: true
 
 #Show all queries
 logging:
@@ -25,12 +29,6 @@ logging:
         stat: debug
         type: trace
 
-#  Enabling H2 Console
-  h2:
-    console:
-      enabled: true
-
-# Turn stats on
 
 
 
