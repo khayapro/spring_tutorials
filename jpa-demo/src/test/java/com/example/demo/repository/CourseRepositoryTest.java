@@ -25,9 +25,19 @@ public class CourseRepositoryTest {
     }
 
     @Test
+    @DirtiesContext
     public void save() {
         final Course response = repository.save(getInstance());
         assertThat(response).isNotNull();
+    }
+
+    @Test
+    public void saveAndUpdate() {
+        final Course course = repository.findById(1L);
+        course.setName(course.getName() + " merged");
+        repository.save(course);
+        final Course result = repository.findById(1L);
+        assertThat(result.getName()).isEqualTo(course.getName());
     }
 
     @Test
