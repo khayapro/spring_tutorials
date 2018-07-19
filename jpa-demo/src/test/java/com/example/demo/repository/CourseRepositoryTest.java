@@ -21,17 +21,24 @@ public class CourseRepositoryTest {
     @Test
     public void findById() {
         final Course response = repository.findById(1L);
-        assertThat(response.getName()).isEqualTo("Learning JPA");
+        assertThat(response).isNotNull();
+    }
+
+    @Test
+    public void save() {
+        final Course response = repository.save(getInstance());
+        assertThat(response).isNotNull();
     }
 
     @Test
     @DirtiesContext
     public void deleteCourse() {
-        final Course response = repository.deleteById(1L);
-        assertThat(response).isNull();
+        final Course course = repository.deleteById(100L);
+        final Course result = repository.findById(100L);
+        assertThat(result).isNull();
     }
 
-    @Test
-    public void save() {
+    public static Course getInstance() {
+        return new Course("Learning Artificial Intelligence");
     }
 }

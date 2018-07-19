@@ -27,5 +27,13 @@ public class DemoApplication implements CommandLineRunner {
 		final Course course1 = repository.deleteById(1L);
 		log.info("course name: " + course.getName() + ", deleted successfully");
 
+		final Course savedCourse = repository.save(getInstance());
+		log.info("saved course name: " + savedCourse.getName());
+
+	}
+
+	public static Course getInstance() {
+		final Course course = new Course("Learning Artificial Intelligence");
+		return course;
 	}
 }

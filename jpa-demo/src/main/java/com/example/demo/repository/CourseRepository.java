@@ -8,6 +8,7 @@ import javax.persistence.EntityManager;
 import javax.transaction.Transactional;
 
 @Repository
+@Transactional
 public class CourseRepository {
 
     @Autowired
@@ -18,10 +19,14 @@ public class CourseRepository {
     }
 
     public Course save(final Course course) {
-        return null;
+        if(course == null) {
+            em.persist(course);
+        } else {
+            em.merge(course);
+        }
+        return course;
     }
 
-    @Transactional
     public Course deleteById(final long id) {
         final Course response = findById(id);
         em.remove(response);
