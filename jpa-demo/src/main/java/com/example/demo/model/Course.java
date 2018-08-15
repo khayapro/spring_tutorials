@@ -2,7 +2,9 @@ package com.example.demo.model;
 
 import lombok.Data;
 
+import javax.persistence.Basic;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 
@@ -13,12 +15,14 @@ public class Course {
     @Id
     @GeneratedValue
     private Long id;
+
+    @Basic(fetch = FetchType.EAGER)
     private String name;
 
     /**
      * Default constructor required by JPA
      */
-    public Course() {
+    protected Course() {
         super();
     }
 

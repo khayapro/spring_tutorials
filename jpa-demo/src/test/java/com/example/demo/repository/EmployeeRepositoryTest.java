@@ -20,6 +20,7 @@ public class EmployeeRepositoryTest {
     private EmployeeRepository repository;
 
     @Test
+    @DirtiesContext
     public void should_save_employee() {
         final Employee employee = saveEmployee();
         assertThat(employee.getId()).isNotNull();
@@ -27,6 +28,7 @@ public class EmployeeRepositoryTest {
     }
 
     @Test
+    @DirtiesContext
     public void should_save_and_find_employee() {
         final Employee employee = saveEmployee();
         final Employee response = repository.findById(employee.getId());
@@ -44,6 +46,7 @@ public class EmployeeRepositoryTest {
     }
 
     @Test
+    @DirtiesContext
     public void should_get_all_employees () {
         final Employee employee = saveEmployee();
         final List<Employee> allEmployees = repository.getAllEmployees();
@@ -55,6 +58,7 @@ public class EmployeeRepositoryTest {
     }
 
     @Test
+    @DirtiesContext
     public void should_raise_employee_salary () {
         Employee employee = saveEmployee();
         employee = repository.raiseEmployeeSalary(employee.getId(), 10);

@@ -48,6 +48,14 @@ public class CourseRepositoryTest {
         assertThat(result).isNull();
     }
 
+    @Test
+    @DirtiesContext
+    public void testingEntityManager() {
+        repository.functionsOfEntityManager();
+    }
+
+
+
     public static Course getInstance() {
         return new Course("Learning Artificial Intelligence");
     }

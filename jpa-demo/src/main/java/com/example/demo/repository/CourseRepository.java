@@ -1,12 +1,14 @@
 package com.example.demo.repository;
 
 import com.example.demo.model.Course;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import javax.persistence.EntityManager;
 import javax.transaction.Transactional;
 
+@Slf4j
 @Repository
 @Transactional
 public class CourseRepository {
@@ -31,5 +33,12 @@ public class CourseRepository {
         final Course response = findById(id);
         em.remove(response);
         return response;
+    }
+
+
+    public void functionsOfEntityManager() {
+        final Course course = new Course("JPA java course");
+        em.persist(course);
+        course.setName("Something else");
     }
 }

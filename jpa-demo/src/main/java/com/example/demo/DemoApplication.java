@@ -29,6 +29,7 @@ public class DemoApplication implements CommandLineRunner {
 
 		final Course savedCourse = repository.save(getInstance());
 		log.info("saved course name: " + savedCourse.getName());
+		repository.functionsOfEntityManager();
 
 	}
 
