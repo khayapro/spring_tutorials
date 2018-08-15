@@ -31,6 +31,14 @@ public class DemoApplication implements CommandLineRunner {
 		log.info("saved course name: " + savedCourse.getName());
 		repository.functionsOfEntityManager();
 
+		final Course newCourse = getInstance();
+		newCourse.setName("Learning JPA and Hibernate");
+		repository.save(newCourse);
+
+		final Course updateCourse = repository.findById(1L);
+		updateCourse.setName("Learning JPA and Hibernate - UPdated");
+		repository.save(updateCourse);
+
 	}
 
 	public static Course getInstance() {
