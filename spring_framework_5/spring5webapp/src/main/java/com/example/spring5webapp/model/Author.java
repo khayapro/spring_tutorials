@@ -33,7 +33,7 @@ public class Author {
         super();
     }
 
-    public Author(String name, String surname) {
+    public Author(final String name, final String surname) {
         this.name = name;
         this.surname = surname;
     }

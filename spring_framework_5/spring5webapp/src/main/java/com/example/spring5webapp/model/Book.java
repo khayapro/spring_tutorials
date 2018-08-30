@@ -9,6 +9,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToMany;
+import javax.persistence.OneToOne;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -21,7 +22,10 @@ public class Book {
     private long id;
     private String title;
     private String isbn;
-    private String publisher;
+    @OneToOne
+//    @JoinColumn(name = "publisher_id")
+    private Publisher publisher;
+
     @ManyToMany(mappedBy = "books")
     private Set<Author> authors = new HashSet<>();
 
@@ -29,7 +33,7 @@ public class Book {
         super();
     }
 
-    public Book(String title, String isbn, String publisher) {
+    public Book(final String title, final String isbn, final Publisher publisher) {
         this.title = title;
         this.isbn = isbn;
         this.publisher = publisher;
