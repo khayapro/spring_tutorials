@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @Controller
 public class BookController {
 
+    private static final String RESPONSE = "books";
     private BookRepository repository;
 
     @Autowired
@@ -19,7 +20,7 @@ public class BookController {
     @RequestMapping("/books")
     public String getBooks(final Model model) {
         model.addAttribute("books", repository.findAll());
-        return "books";
+        return RESPONSE;
     }
 
 

@@ -12,7 +12,7 @@ import javax.persistence.TableGenerator;
 @Data
 @Entity
 @Table(name = "employee")
-public class Employee {
+public class Employee extends Course {
 
     @Id
     @TableGenerator(name = "EMP_GEN", table = "EMP_GEN_ID", pkColumnName = "PK_GEN_NAME", valueColumnName = "PK_GEN_VAL")

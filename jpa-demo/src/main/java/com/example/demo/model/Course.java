@@ -42,5 +42,4 @@ public class Course {
     public Course(final String name) {
         this.name = name;
     }
-
 }
