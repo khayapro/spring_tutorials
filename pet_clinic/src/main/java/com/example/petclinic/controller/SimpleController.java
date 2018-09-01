@@ -2,7 +2,6 @@ package com.example.petclinic.controller;
 
 import com.example.petclinic.interfaces.GreetingService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Controller;
 
 @Controller
@@ -11,7 +10,7 @@ public class SimpleController {
     private GreetingService greetingService;
 
     @Autowired
-    public SimpleController(@Qualifier("primaryGreetingService") final GreetingService greetingService) {
+    public SimpleController(final GreetingService greetingService) {
         this.greetingService = greetingService;
     }
 
