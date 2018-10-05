@@ -16,15 +16,6 @@
 *.iml
 *.ipr
 
-# file: ~/.gitignore_global
-.DS_Store
-.idea
-
-.mvn
-*/mvnw.cmd
-*/*/mvnw.cmd
-mvnw
-
 ### NetBeans ###
 /nbproject/private/
 /build/
