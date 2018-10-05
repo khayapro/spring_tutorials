@@ -24,7 +24,6 @@ public class MultiplicationServiceTest {
     @Autowired
     private MultiplicationService multiplicationService;
 
-
     @Test
     public void createRandomMultiplication() {
         given(randomGeneratorService.generateRandomFactor()).willReturn(10, 50);
