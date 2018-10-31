@@ -1,4 +1,4 @@
-package model;
+package com.petclinic.data.model;
 
 import lombok.Data;
 
@@ -7,7 +7,5 @@ import lombok.Data;
  */
 
 @Data
-public class PetType {
-
-    private String name;
+public class Owner extends Person {
 }

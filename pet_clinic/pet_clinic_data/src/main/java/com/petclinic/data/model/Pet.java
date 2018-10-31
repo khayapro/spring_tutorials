@@ -1,4 +1,4 @@
-package model;
+package com.petclinic.data.model;
 
 import lombok.Data;
 
