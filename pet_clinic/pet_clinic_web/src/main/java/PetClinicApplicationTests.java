@@ -11,6 +11,7 @@ public class PetClinicApplicationTests {
 
 	@Test
 	public void contextLoads() {
+		System.out.println("");
 	}
 
 }
