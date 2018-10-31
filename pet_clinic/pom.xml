@@ -6,7 +6,11 @@
 	<groupId>com.example</groupId>
 	<artifactId>pet-clinic</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<packaging>jar</packaging>
+	<modules>
+		<module>pet_clinic_data</module>
+		<module>pet_clinic_web</module>
+	</modules>
+	<packaging>pom</packaging>
 
 	<name>pet-clinic</name>
 	<description>Pet Clinic Project - Spring Tut</description>
