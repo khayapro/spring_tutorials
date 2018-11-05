@@ -11,4 +11,5 @@ import javax.persistence.Entity;
 @Data
 @Entity
 public class Owner extends Person {
+
 }
