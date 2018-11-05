@@ -1,15 +1,12 @@
 package com.petclinic.data.services.map;
 
-import com.petclinic.data.model.Owner;
 import com.petclinic.data.services.CrudService;
 
-import javax.persistence.Id;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Map;
 import java.util.Optional;
 import java.util.Set;
-import java.util.stream.Collectors;
 
 /**
  * Created by khayapro on 2018/11/05.
