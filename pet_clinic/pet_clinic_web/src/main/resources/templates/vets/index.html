@@ -6,5 +6,22 @@
 </head>
 <body>
     <h1 th:text="'Replace with vet'">Default header</h1>
+
+    <table>
+        <thead>
+        <tr>
+            <th>Id</th>
+            <th>name</th>
+            <th>surname</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="vet:${vets}">
+            <td th:text="${vet.id}">1</td>
+            <td th:text="${vet.name}">Joe</td>
+            <td th:text="${vet.surname}">Block</td>
+        </tr>
+        </tbody>
+    </table>
 </body>
 </html>

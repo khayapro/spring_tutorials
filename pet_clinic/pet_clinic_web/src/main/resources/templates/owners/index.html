@@ -1,10 +1,26 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://thymeleaf.org">
+<html lang="en"  xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <title>Owner in Clinic</title>
 </head>
 <body>
-    <h1 th:text="'Replace with owner'">Default owner page</h1>
+<h1 th:text="'Owners List'">Default owner page</h1>
+<table>
+    <thead>
+    <tr>
+        <th>Id</th>
+        <th>name</th>
+        <th>surname</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="owner:${owners}">
+        <td th:text="${owner.id}">1</td>
+        <td th:text="${owner.name}">Joe</td>
+        <td th:text="${owner.surname}">Block</td>
+    </tr>
+    </tbody>
+</table>
 </body>
 </html>

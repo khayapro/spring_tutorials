@@ -1,10 +1,10 @@
 package com.petclinic.services.map;
 
 import java.util.HashMap;
-import java.util.HashSet;
 import java.util.Map;
 import java.util.Optional;
 import java.util.Set;
+import java.util.stream.Collectors;
 
 /**
  * Created by khayapro on 2018/11/05.
@@ -27,7 +27,7 @@ public abstract class AbstractMapService <T, ID>  {
     }
 
     public Set<T> findAll() {
-        return new HashSet<>(map.values());
+        return map.values().stream().collect(Collectors.toSet());
     }
 
     public T save(ID id, T object) {
