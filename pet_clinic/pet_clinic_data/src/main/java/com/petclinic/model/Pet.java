@@ -1,4 +1,4 @@
-package com.petclinic.data.model;
+package com.petclinic.model;
 
 import lombok.Data;
 
@@ -12,7 +12,7 @@ import java.time.LocalDate;
 @Entity
 public class Pet extends BaseEntity {
 
-    private PetType type;
+    private String petType;
     private Owner owner;
     private LocalDate birthDate;
 

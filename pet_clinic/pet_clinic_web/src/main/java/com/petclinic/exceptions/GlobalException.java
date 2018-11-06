@@ -1,4 +1,4 @@
-package com.petclinic.web.exceptions;
+package com.petclinic.exceptions;
 
 import org.springframework.web.bind.annotation.ControllerAdvice;
 

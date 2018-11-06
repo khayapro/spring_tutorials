@@ -1,4 +1,4 @@
-package com.petclinic.data.services;
+package com.petclinic.services;
 
 /**
  * Created by khayapro on 2018/11/01.

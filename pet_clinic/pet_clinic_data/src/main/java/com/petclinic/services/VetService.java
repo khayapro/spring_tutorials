@@ -1,6 +1,6 @@
-package com.petclinic.data.services;
+package com.petclinic.services;
 
-import com.petclinic.data.model.Vet;
+import com.petclinic.model.Vet;
 
 /**
  * Created by khayapro on 2018/11/01.
