@@ -4,6 +4,8 @@ import com.petclinic.model.Owner;
 import com.petclinic.services.OwnerService;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 /**
  * Created by khayapro on 2018/11/05.
  */
@@ -13,6 +15,11 @@ public class OwnerServiceMap extends AbstractMapService<Owner, Long> implements 
     @Override
     public Owner findOwnerBySurname(String surname) {
         return null;
+    }
+
+    @Override
+    public void saveAll(List<Owner> asList) {
+        super.saveAll(asList);
     }
 
     @Override

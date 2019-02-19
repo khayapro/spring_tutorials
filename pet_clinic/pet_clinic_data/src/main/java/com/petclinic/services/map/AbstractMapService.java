@@ -2,12 +2,7 @@ package com.petclinic.services.map;
 
 import com.petclinic.model.BaseEntity;
 
-import java.util.Collections;
-import java.util.HashMap;
-import java.util.Map;
-import java.util.NoSuchElementException;
-import java.util.Optional;
-import java.util.Set;
+import java.util.*;
 import java.util.stream.Collectors;
 
 /**
@@ -45,6 +40,10 @@ public abstract class AbstractMapService <T extends BaseEntity, ID extends Long>
         }
 
         return map.get(object.getId());
+    }
+
+    public void saveAll(List<T> list) {
+        list.forEach(this::save);
     }
 
     public void delete(T object) {

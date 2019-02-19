@@ -1,17 +1,17 @@
 <!DOCTYPE html>
-<html lang="en"  xmlns:th="http://www.thymeleaf.org">
+<html lang="en"  xmlns:th="http://www.thymeleaf.org" th:replace="~{fragments/layout :: layout (~{::body},'owners')}">
 <head>
     <meta charset="UTF-8">
     <title>Owner in Clinic</title>
 </head>
 <body>
-<h1 th:text="'Owners List'">Default owner page</h1>
-<table>
+<h2 th:text="'Owners List'">Default owner page</h2>
+<table class="table table-striped">
     <thead>
     <tr>
-        <th>Id</th>
-        <th>name</th>
-        <th>surname</th>
+        <th style="width: 150px;">Id</th>
+        <th style="width: 200px;">name</th>
+        <th style="width: 200px;">surname</th>
     </tr>
     </thead>
     <tbody>

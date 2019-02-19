@@ -8,6 +8,8 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Component;
 
+import java.util.Arrays;
+
 /**
  * Created by khayapro on 2018/11/06.
  */
@@ -28,13 +30,13 @@ public class DataLoader implements CommandLineRunner {
         final Owner owner1 = new Owner();
         owner1.setName("Sam");
         owner1.setSurname("Brown");
-        ownerService.save(owner1);
 
         final Owner owner2 = new Owner();
         owner2.setName("George");
         owner2.setSurname("Browners");
-        ownerService.save(owner2);
+        ownerService.saveAll(Arrays.asList(owner1, owner2));
         log.info("Loaded owners successfully...");
+        log.error("owners size: " + ownerService.findAll().size());
 
         final Vet vet1 = new Vet();
         vet1.setName("Vet");
