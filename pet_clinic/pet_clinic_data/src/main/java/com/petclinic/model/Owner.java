@@ -4,7 +4,8 @@ import lombok.Data;
 
 import javax.persistence.Embedded;
 import javax.persistence.Entity;
-import javax.persistence.SecondaryTable;
+import javax.persistence.OneToMany;
+import java.util.HashSet;
 import java.util.Set;
 
 /**
@@ -15,7 +16,8 @@ import java.util.Set;
 @Entity
 public class Owner extends Person {
 
-    private Set<Pet> pets;
+    @OneToMany(mappedBy = "owner", targetEntity = Pet.class)
+    private Set<Pet> pets = new HashSet<>();
 
     @Embedded
     private Contact contact;
