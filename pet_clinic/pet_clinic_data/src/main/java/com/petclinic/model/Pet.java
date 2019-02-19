@@ -8,6 +8,7 @@ import java.time.LocalDate;
 /**
  * Created by khayapro on 2018/10/31.
  */
+
 @Data
 @Entity
 public class Pet extends BaseEntity {
