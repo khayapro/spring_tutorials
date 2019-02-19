@@ -2,6 +2,7 @@ package com.petclinic.model;
 
 import lombok.Data;
 
+import javax.persistence.Embedded;
 import javax.persistence.Entity;
 import javax.persistence.SecondaryTable;
 import java.util.Set;
@@ -15,5 +16,8 @@ import java.util.Set;
 public class Owner extends Person {
 
     private Set<Pet> pets;
+
+    @Embedded
+    private Contact contact;
 
 }
