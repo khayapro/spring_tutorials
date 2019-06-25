@@ -1,7 +1,4 @@
 /target/
-*/target
-.class
-.jar
 !.mvn/wrapper/maven-wrapper.jar
 
 ### STS ###
@@ -19,19 +16,10 @@
 *.iml
 *.ipr
 
-# file: ~/.gitignore_global
-.DS_Store
-.idea
-
-.mvn
-*/mvnw.cmd
-*/*/mvnw.cmd
-mvnw
-
 ### NetBeans ###
 /nbproject/private/
-/build/
 /nbbuild/
 /dist/
 /nbdist/
 /.nb-gradle/
+/build/
