@@ -6,8 +6,8 @@ import javax.inject.Named;
 import java.util.Arrays;
 import java.util.List;
 
-@Named
-@Stateful
+@Named(value = "MyItemReader")
+//@Stateful
 public class MyItemReader extends AbstractItemReader {
 
     private static List<String> names;

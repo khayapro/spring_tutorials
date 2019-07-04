@@ -10,12 +10,21 @@ package com.example.demo;
 
 import javax.batch.api.AbstractBatchlet;
 import javax.inject.Named;
+import java.util.concurrent.ArrayBlockingQueue;
+import java.util.concurrent.BlockingQueue;
 
-@Named
+@Named(value = "BatchComplete")
 public class BatchComplete extends AbstractBatchlet {
+
+
+
+    private BlockingQueue queue = new ArrayBlockingQueue<String>(10);
+
     @Override
     public String process() throws Exception {
-        System.out.println(".........BATCHLET JOB RUNNING SUCCESSFUL......");
+        System.out.println("completed batch process.....");
         return "COMPLETED";
     }
+
+
 }

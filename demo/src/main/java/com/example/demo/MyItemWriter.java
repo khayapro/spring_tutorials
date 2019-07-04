@@ -13,12 +13,12 @@ import javax.ejb.Stateless;
 import javax.inject.Named;
 import java.util.List;
 
-@Named
-@Stateless
+@Named(value = "MyItemWriter")
+//@Stateless
 public class MyItemWriter extends AbstractItemWriter {
 
     @Override
-    public void writeItems(List<Object> list) throws Exception {
+    public void writeItems(List<Object> list) {
         if (list != null && !list.isEmpty()) {
             System.out.println("chuck size: " + list.size());
 

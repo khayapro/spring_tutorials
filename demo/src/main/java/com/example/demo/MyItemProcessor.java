@@ -4,12 +4,12 @@ import javax.batch.api.chunk.ItemProcessor;
 import javax.ejb.Stateless;
 import javax.inject.Named;
 
-@Named
-@Stateless
+@Named(value = "MyItemProcessor")
+//@Stateless
 public class MyItemProcessor implements ItemProcessor {
 
     @Override
-    public Person processItem(Object o) throws Exception {
+    public Person processItem(Object o) {
         if (o != null) {
             final String value = (String) o;
             return new Person(value);

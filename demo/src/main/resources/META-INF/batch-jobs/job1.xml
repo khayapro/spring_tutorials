@@ -5,12 +5,12 @@
      version="1.0">
     <step id="step1" next="step2">
         <chunk item-count="2">
-            <reader ref="myItemReader"></reader>
-            <processor ref="myItemProcessor"/>
-            <writer ref="myItemWriter"></writer>
+            <reader ref="MyItemReader"/>
+            <processor ref="MyItemProcessor"/>
+            <writer ref="MyItemWriter"/>
         </chunk>
     </step>
     <step id="step2">
-        <batchlet ref="batchComplete"/>
+        <batchlet ref="BatchComplete"/>
     </step>
 </job>

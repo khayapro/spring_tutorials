@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<persistence xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+             xsi:schemaLocation="http://java.sun.com/xml/ns/persistence http://java.sun.com/xml/ns/persistence/persistence_2_0.xsd"
+             version="2.0" xmlns="http://java.sun.com/xml/ns/persistence">
+    <persistence-unit name="db_pu" transaction-type="JTA">
+        <provider>org.eclipse.persistence.jpa.PersistenceProvider</provider>
+        <!--<class>model.Order</class>-->
+        <!--<class>model.OrderLine</class>-->
+        <class>com.example.batch.processing.demo.Person</class>
+        <shared-cache-mode>NONE</shared-cache-mode>
+        <properties>
+            <!-- Change this to access your own database. -->
+            <property name="javax.persistence.jdbc.driver" value="org.postgresql.Driver" />
+            <property name="javax.persistence.jdbc.url" value="jdbc:postgresql://localhost:5432/mydb" />
+            <property name="javax.persistence.jdbc.user" value="myuser" />
+            <property name="javax.persistence.jdbc.password" value="P@ssw0rd" />
+
+            <property name="eclipselink.ddl-generation" value="create-tables" />
+            <property name="eclipselink.jdbc.cache-statements" value="true" />
+            <property name="eclipselink.logging.level" value="off" />
+            <property name="eclipselink.orm.validate.schema" value="true"/>
+        </properties>
+    </persistence-unit>
+</persistence>
