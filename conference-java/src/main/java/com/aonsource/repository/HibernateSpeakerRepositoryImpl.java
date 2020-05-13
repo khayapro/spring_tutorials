@@ -1,10 +1,12 @@
 package com.aonsource.repository;
 
 import com.aonsource.model.Speaker;
+import org.springframework.stereotype.Repository;
 
 import java.util.Collections;
 import java.util.List;
 
+@Repository("speakerRepository")
 public class HibernateSpeakerRepositoryImpl implements SpeakerRepository {
 
 
