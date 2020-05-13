@@ -9,23 +9,17 @@
 package com.example.demo;
 
 import javax.batch.api.AbstractBatchlet;
-import javax.batch.runtime.context.JobContext;
-import javax.inject.Inject;
 import javax.inject.Named;
-import java.util.concurrent.ExecutorService;
-import java.util.concurrent.Executors;
+import java.util.concurrent.ArrayBlockingQueue;
+import java.util.concurrent.BlockingQueue;
 
-@Named(value = "BatchComplete")
-public class BatchComplete extends AbstractBatchlet {
+@Named(value = "BatchComplete1")
+public class BatchComplete1 extends AbstractBatchlet {
 
-    @Inject
-    private JobContext context;
 
     @Override
     public String process() {
-        System.out.println("start processing.....");
-        final ExecutorService executorService = Executors.newSingleThreadExecutor();
-        context.setTransientUserData(executorService);
+        System.out.println("processing.....");
         return "COMPLETED";
     }
 

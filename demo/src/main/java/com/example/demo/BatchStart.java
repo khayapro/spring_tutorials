@@ -13,38 +13,14 @@ import javax.batch.runtime.BatchRuntime;
 import javax.ejb.Schedule;
 import javax.ejb.Stateless;
 import java.util.Properties;
-import java.util.concurrent.Executors;
-import java.util.concurrent.ScheduledExecutorService;
-import java.util.concurrent.TimeUnit;
-import java.util.concurrent.atomic.AtomicInteger;
 
 @Stateless
 public class BatchStart {
 
-    private AtomicInteger count = new AtomicInteger();
     final JobOperator jo = BatchRuntime.getJobOperator();
 
-    @Schedule(second = "*", info = "Runs every 10 seconds")
+    @Schedule(hour = "21", minute = "31", info = "Runs every 10 seconds")
     public void startBatchProcess() {
-
-        final ScheduledExecutorService schedule = Executors.newSingleThreadScheduledExecutor();
-        schedule.schedule(new Runnable() {
-            @Override
-            public void run() {
-                while (true) {
-                    System.out.println("This is running...: count: " + count);
-                    count.incrementAndGet();
-                    try {
-                        Thread.sleep(2000);
-                        if (count.get() == 10) {
-                            break;
-                        }
-                    } catch (InterruptedException e) {
-                        e.printStackTrace();
-                    }
-                }
-            }
-        },2, TimeUnit.SECONDS);
         start();
     }
 

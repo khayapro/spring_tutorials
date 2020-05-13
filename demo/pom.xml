@@ -46,7 +46,7 @@
     </build>
     <profiles>
         <profile>
-            <id>payara</id>
+            <id>local</id>
             <activation>
                 <activeByDefault>true</activeByDefault>
             </activation>

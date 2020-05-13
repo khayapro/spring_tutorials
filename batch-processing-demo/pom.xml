@@ -81,7 +81,7 @@
                             <execution>
                                 <phase>package</phase>
                                 <goals>
-                                    <goal>bundle</goal>
+                                    <goal>start</goal>
                                 </goals>
                             </execution>
                         </executions>
