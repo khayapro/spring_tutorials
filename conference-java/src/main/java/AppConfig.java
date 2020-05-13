@@ -15,7 +15,7 @@ public class AppConfig {
 
     @Bean(name = "speakerService")
     public SpeakerService getSpeakerService() {
-        return new SpeakerServiceImpl();
+        return new SpeakerServiceImpl(getSpeakerRepository());
     }
 
 
