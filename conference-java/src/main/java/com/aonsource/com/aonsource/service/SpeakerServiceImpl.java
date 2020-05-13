@@ -6,7 +6,6 @@ import lombok.Setter;
 
 import java.util.List;
 
-@Setter
 public class SpeakerServiceImpl implements SpeakerService {
 
     private SpeakerRepository repository;
