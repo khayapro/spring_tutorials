@@ -2,8 +2,10 @@ package za.co.aonsource.conferencedemo.models;
 
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import org.hibernate.annotations.Type;
 
 import javax.persistence.*;
+import java.util.List;
 
 @Data
 @NoArgsConstructor
@@ -24,5 +26,13 @@ public class Speaker {
     private String company;
     @Column(name = "speaker_bio")
     private String speakerBio;
+
+    @Lob
+    @Type(type = "org.hibernate.type.BinaryType")
+    @Column(name = "speaker_photo")
+    private byte [] profilePicture;
+
+    @ManyToMany(mappedBy = "speakers")
+    List<Session> sessions;
 
 }
